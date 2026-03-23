@@ -3,202 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Bansal - Professional Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Abhishek Bansal - Premium Portfolio</title>
+    <!-- Modern Font Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container header-inner">
-            <a class="brand" href="#home">
-                <img class="avatar" src="profile.jpeg" alt="Abhishek Bansal" />
-                <div class="brand-text">
-                    <h1>Abhishek Bansal</h1>
-                    <p>Cybersecurity & Data Analytics</p>
-                </div>
-            </a>
-            <nav class="nav">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#training">Training</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <a class="btn btn-alt" href="resume.pdf" target="_blank">Download CV</a>
-        </div>
-    </header>
+    <!-- Ambient Background Glows -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- Floating Dynamic Island Header -->
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-inner">
+                <a class="brand" href="#home">
+                    <img class="avatar" src="profile.jpeg" alt="Abhishek Bansal" />
+                    <div class="brand-text">
+                        <h1>Abhishek Bansal</h1>
+                    </div>
+                </a>
+                <nav class="nav">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <a class="btn-alt" href="resume.pdf" target="_blank">Download CV</a>
+            </div>
+        </header>
+    </div>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container hero-inner">
+        <!-- Hero Section -->
+        <section id="home" class="hero section">
+            <div class="container hero-inner reveal">
                 <div class="hero-left">
-                    <h2>Hi, I’m <span>Abhishek Bansal</span></h2>
-                    <p>I build secure applications and data-driven products that help teams make smarter decisions.</p>
+                    <h2>Hi, I’m <br/><span>Abhishek Bansal</span></h2>
+                    <p>I build secure applications, analyze data to uncover insights, and engineer modern, robust solutions that help teams make smarter decisions.</p>
                     <div class="hero-actions">
-                        <a class="btn" href="#projects">View Work</a>
+                        <a class="btn" href="#projects">View Work <i class="fa-solid fa-arrow-right-long" style="margin-left:8px;"></i></a>
                         <a class="btn btn-outline" href="#contact">Contact Me</a>
                     </div>
                 </div>
                 <div class="hero-right">
-                    <img class="hero-image" src="profile.jpeg" alt="Abhishek Bansal" />
+                    <div class="hero-image-wrapper">
+                        <img class="hero-image" src="profile.jpeg" alt="Abhishek Bansal" />
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="section">
             <div class="container section-inner">
-                <h2 class="section-title">About</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>I'm a B.Tech Computer Science student at Lovely Professional University with a strong foundation in cybersecurity, data analytics, and software development.</p>
-                        <p>My work focuses on building secure applications, analyzing data to uncover actionable insights, and improving processes through automation and smart engineering.</p>
-                        <p>Beyond code, I enjoy learning new security tools, building dashboards, and solving real-world problems through technology.</p>
+                <h2 class="section-title reveal">About Me</h2>
+                <div class="about-grid reveal">
+                    <div class="about-text glass-card">
+                        <p>I'm a B.Tech Computer Science student at <strong>Lovely Professional University</strong> with a profound passion for cybersecurity, data analytics, and modern software development.</p>
+                        <p>My objective is to architect secure applications, analyze vast data sets to reveal actionable insights, and elevate digital processes through smart engineering.</p>
+                        <p>Beyond the code, I constantly experiment with new security tools, build intuitive dashboards, and crack complex real-world challenges through technology.</p>
                     </div>
                     <div class="about-stats">
-                        <div class="stat">
+                        <div class="stat glass-card">
                             <h3>8.64</h3>
                             <p>CGPA</p>
                         </div>
-                        <div class="stat">
+                        <div class="stat glass-card">
                             <h3>100+</h3>
-                            <p>TryHackMe & HTB Points</p>
+                            <p>THM / HTB Points</p>
                         </div>
-                        <div class="stat">
+                        <div class="stat glass-card" style="grid-column: span 2;">
                             <h3>3+</h3>
-                            <p>Projects</p>
+                            <p>Dedicated Major Projects</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="section">
-            <div class="container">
-                <h2 class="section-title">Projects</h2>
+            <div class="container section-inner">
+                <h2 class="section-title reveal">Featured Projects</h2>
                 <div class="card-grid">
-                    <div class="card">
-                        <h3>Food Delivery Project</h3>
-                        <p>A full-stack food ordering system featuring order management, menu analytics, and a responsive user interface.</p>
+                    <!-- Project 1 -->
+                    <div class="glass-card project-card reveal" style="transition-delay: 0ms;">
+                        <h3>Food Delivery Application</h3>
                         <div class="card-tags">
                             <span>Java</span>
                             <span>JavaScript</span>
-                            <span>HTML</span>
+                            <span>HTML/CSS</span>
                         </div>
-                        <a class="card-link" href="https://github.com/AbhiBofficial/Food-Delivery-project" target="_blank">View on GitHub</a>
+                        <p>A comprehensive full-stack food ordering ecosystem featuring advanced order management, real-time menu analytics, and a flawlessly responsive UI.</p>
+                        <a class="card-link" href="https://github.com/AbhiBofficial/Food-Delivery-project" target="_blank">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
                     </div>
-                    <div class="card">
-                        <h3>WE-5</h3>
-                        <p>A modern web project that focuses on clean UI/UX and responsive design practices.</p>
+                    <!-- Project 2 -->
+                    <div class="glass-card project-card reveal" style="transition-delay: 100ms;">
+                        <h3>WE-5 UI/UX Experience</h3>
                         <div class="card-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Vanilla JS</span>
                         </div>
-                        <a class="card-link" href="https://github.com/AbhiBofficial/WE-5" target="_blank">View on GitHub</a>
+                        <p>A state-of-the-art modern web component toolkit prioritizing immaculate UI/UX paradigms, fluid animations, and absolute responsive design.</p>
+                        <a class="card-link" href="https://github.com/AbhiBofficial/WE-5" target="_blank">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
                     </div>
-                    <div class="card">
-                        <h3>HenCatcher</h3>
-                        <p>A performance-focused C++ system designed for efficient tracking and management.</p>
+                    <!-- Project 3 -->
+                    <div class="glass-card project-card reveal" style="transition-delay: 200ms;">
+                        <h3>HenCatcher Performance Engine</h3>
                         <div class="card-tags">
                             <span>C++</span>
                             <span>Algorithms</span>
                             <span>Optimization</span>
                         </div>
-                        <a class="card-link" href="https://github.com/AbhiBofficial/HenCatcher" target="_blank">View on GitHub</a>
+                        <p>A high-octane, performance-driven C++ software system engineered specifically for tracking, latency management, and memory efficiency.</p>
+                        <a class="card-link" href="https://github.com/AbhiBofficial/HenCatcher" target="_blank">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title">Skills</h2>
+            <div class="container section-inner">
+                <h2 class="section-title reveal">Technical Arsenal</h2>
                 <div class="skill-grid">
-                    <div class="skill">
-                        <h3>Programming</h3>
-                        <p>C++, Python, C, Java</p>
+                    <div class="glass-card skill reveal" style="transition-delay: 0ms;">
+                        <h3><i class="fa-solid fa-code"></i> Engineering</h3>
+                        <div class="skill-list">
+                            <span>C++ / C</span>
+                            <span>Python</span>
+                            <span>Java</span>
+                            <span>JavaScript</span>
+                        </div>
                     </div>
-                    <div class="skill">
-                        <h3>Cybersecurity</h3>
-                        <p>Wireshark, Nmap, TryHackMe, Hack The Box</p>
+                    <div class="glass-card skill reveal" style="transition-delay: 100ms;">
+                        <h3><i class="fa-solid fa-shield-halved"></i> Cybersecurity</h3>
+                        <div class="skill-list">
+                            <span>Wireshark</span>
+                            <span>Nmap</span>
+                            <span>TryHackMe</span>
+                            <span>Hack The Box</span>
+                        </div>
                     </div>
-                    <div class="skill">
-                        <h3>Data & Analytics</h3>
-                        <p>Tableau, MS SQL, Data Visualization, Preprocessing</p>
+                    <div class="glass-card skill reveal" style="transition-delay: 200ms;">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Data & Analytics</h3>
+                        <div class="skill-list">
+                            <span>Tableau</span>
+                            <span>MS SQL</span>
+                            <span>Visualization</span>
+                            <span>Data Cleaning</span>
+                        </div>
                     </div>
-                    <div class="skill">
-                        <h3>Soft Skills</h3>
-                        <p>Problem Solving, Collaboration, Adaptability, Communication</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="training" class="section">
-            <div class="container">
-                <h2 class="section-title">Training</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Cyber Security Industrial Training</h3>
-                        <p><strong>Interns Elite (IIT Hyderabad)</strong> | Aug ’24 – Oct ’24</p>
-                        <ul>
-                            <li>Performed vulnerability assessments and threat analysis to improve early risk detection.</li>
-                            <li>Monitored networks and logs to identify suspicious activity and strengthen security posture.</li>
-                            <li>Practiced incident response, access control checks, and risk mitigation workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="section">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Lovely Professional University</h3>
-                        <p><strong>B.Tech – Computer Science & Engineering</strong></p>
-                        <p>Aug ’23 – Present | CGPA: 8.64</p>
-                    </div>
-                    <div class="card">
-                        <h3>St. Joseph’s Convent School (ICSE)</h3>
-                        <p><strong>Intermediate</strong> – PCM</p>
-                        <p>Mar ’22 – May ’23 | 78%</p>
-                    </div>
-                    <div class="card">
-                        <h3>St. Joseph’s Convent School (ICSE)</h3>
-                        <p><strong>Matriculation</strong></p>
-                        <p>Mar ’20 – May ’21 | 86%</p>
+                    <div class="glass-card skill reveal" style="transition-delay: 300ms;">
+                        <h3><i class="fa-solid fa-network-wired"></i> Core Competencies</h3>
+                        <div class="skill-list">
+                            <span>Problem Solving</span>
+                            <span>Algorithms</span>
+                            <span>Adaptability</span>
+                            <span>Collaboration</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Interactive Timeline (Experience / Education) -->
+        <section id="experience" class="section">
+            <div class="container section-inner">
+                <h2 class="section-title reveal">Journey & Experience</h2>
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item reveal" style="transition-delay: 0ms;">
+                        <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="glass-card timeline-content">
+                            <h3>Cyber Security Industrial Training</h3>
+                            <h4>Interns Elite (IIT Hyderabad)</h4>
+                            <span class="date">Aug 2024 – Oct 2024</span>
+                            <ul>
+                                <li>Executed robust vulnerability assessments and extensive threat analysis vectors.</li>
+                                <li>Mastered advanced log filtering and network monitoring for anomaly detection.</li>
+                                <li>Simulated incident response and reinforced access control policies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item reveal" style="transition-delay: 150ms;">
+                        <div class="timeline-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="glass-card timeline-content">
+                            <h3>Lovely Professional University</h3>
+                            <h4>B.Tech – Computer Science & Engineering</h4>
+                            <span class="date">Aug 2023 – Present</span>
+                            <p>Consistently maintaining a high academic standing with a CGPA of 8.64. Specialized in fundamental CS theory, modern dev methodologies, and data security.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="timeline-item reveal" style="transition-delay: 300ms;">
+                        <div class="timeline-icon"><i class="fa-solid fa-school"></i></div>
+                        <div class="glass-card timeline-content">
+                            <h3>St. Joseph’s Convent School</h3>
+                            <h4>Intermediate & Matriculation (ICSE)</h4>
+                            <span class="date">2020 – 2023</span>
+                            <p>Graduated with strong foundations in science (PCM) maintaining high percentiles across successive board examinations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Contact</h2>
+            <div class="container section-inner">
+                <h2 class="section-title reveal">Let's Connect</h2>
+                <p class="contact-intro reveal">I'm currently looking for new opportunities, collaborations, and technological challenges. Whether you have a question or just want to say hi, my inbox is always open!</p>
                 <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>Email</h3>
-                        <p><a href="mailto:ab2593792@gmail.com">ab2593792@gmail.com</a></p>
+                    <div class="contact-card reveal" style="transition-delay: 0ms;">
+                        <a class="contact-icon" href="mailto:ab2593792@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                        <h3>Email Me</h3>
+                        <a href="mailto:ab2593792@gmail.com">ab2593792@gmail.com</a>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card reveal" style="transition-delay: 100ms;">
+                        <a class="contact-icon" href="https://github.com/AbhiBofficial" target="_blank"><i class="fa-brands fa-github"></i></a>
                         <h3>GitHub</h3>
-                        <p><a href="https://github.com/AbhiBofficial" target="_blank">github.com/AbhiBofficial</a></p>
+                        <a href="https://github.com/AbhiBofficial" target="_blank">@AbhiBofficial</a>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card reveal" style="transition-delay: 200ms;">
+                        <a class="contact-icon" href="https://www.linkedin.com/in/abhibofficial" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                         <h3>LinkedIn</h3>
-                        <p><a href="https://www.linkedin.com/in/abhibofficial" target="_blank">linkedin.com/in/abhibofficial</a></p>
+                        <a href="https://www.linkedin.com/in/abhibofficial" target="_blank">in/abhibofficial</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-inner">
-            <p>&copy; 2026 Abhishek Bansal. Built with HTML, CSS, and a bit of JavaScript.</p>
+    <footer class="footer reveal">
+        <div class="container">
+            <p>&copy; 2026 Abhishek Bansal. Designed and Engineered with <i class="fa-solid fa-heart" style="color:var(--accent); margin: 0 4px;"></i> & Precision.</p>
         </div>
     </footer>
 

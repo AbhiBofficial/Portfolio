@@ -1,4 +1,4 @@
-// Smooth scrolling for navigation links
+// --- Smooth Scrolling ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -7,73 +7,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         }
     });
 });
 
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections for animation
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'all 0.6s ease';
-    observer.observe(section);
+// --- Dynamic Island Header Shrink/Blur on Scroll ---
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.style.padding = '0.3rem 1.2rem';
+        header.style.background = 'rgba(10, 15, 30, 0.85)';
+    } else {
+        header.style.padding = '0.5rem 1.5rem';
+        header.style.background = 'rgba(10, 15, 30, 0.7)';
+    }
 });
 
-// Add active state to navigation based on scroll position
+// --- Active Nav Link Update ---
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+
 window.addEventListener('scroll', () => {
     let current = '';
-    const sections = document.querySelectorAll('section[id]');
-
+    const buffer = 200; // Trigger threshold
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - 220) {
+        if (pageYOffset >= sectionTop - buffer) {
             current = section.getAttribute('id');
         }
     });
 
-    document.querySelectorAll('.nav a').forEach(link => {
+    navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
+        if (link.getAttribute('href').substring(1) === current) {
             link.classList.add('active');
         }
     });
 });
 
-// Add some interactivity to cards
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-6px)';
+// --- Staggered Reveal Animations ---
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+const revealOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        
+        // Add active class
+        entry.target.classList.add('active');
+        
+        // Optional: unobserve if you only want it to animate once
+        // observer.unobserve(entry.target);
     });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
+}, revealOptions);
+
+revealElements.forEach(el => {
+    revealOnScroll.observe(el);
+});
+
+// --- Dynamic Hover Glow on Glass Cards ---
+const glassCards = document.querySelectorAll('.glass-card');
+
+glassCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Set CSS variables for the exact mouse position
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
 
-// Form validation (if contact form is added)
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-
-// Log page load for analytics (optional)
-console.log('Portfolio loaded successfully');
+console.log('Advanced Interactive Portfolio Loaded!');
