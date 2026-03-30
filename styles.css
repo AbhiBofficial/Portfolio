@@ -17,7 +17,24 @@
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-border-hover: rgba(255, 255, 255, 0.2);
+    --header-bg: rgba(10, 15, 30, 0.7);
+    --header-bg-scroll: rgba(10, 15, 30, 0.85);
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root.light-mode {
+    --primary: #008cdb;
+    --secondary: #006eb8;
+    --accent: #6b21a8;
+    --accent-glow: rgba(107, 33, 168, 0.4);
+    --bg-color: #f0f4f8;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border-hover: rgba(0, 0, 0, 0.15);
+    --header-bg: rgba(255, 255, 255, 0.7);
+    --header-bg-scroll: rgba(255, 255, 255, 0.9);
 }
 
 html {
@@ -104,7 +121,7 @@ body {
 }
 
 .header {
-    background: rgba(10, 15, 30, 0.7);
+    background: var(--header-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
@@ -196,6 +213,33 @@ body {
     color: var(--bg-color);
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.theme-btn:hover {
+    background: var(--glass-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Buttons */
 .btn {
     padding: 0.8rem 1.8rem;
@@ -265,8 +309,9 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    background: linear-gradient(135deg, #fff, var(--text-muted));
+    background: linear-gradient(135deg, var(--text-main), var(--text-muted));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
     display: inline-block;
@@ -314,6 +359,7 @@ body {
 .hero-left h2 span {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -440,6 +486,7 @@ body {
     font-weight: 800;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.2rem;
 }

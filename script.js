@@ -20,10 +20,10 @@ const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         header.style.padding = '0.3rem 1.2rem';
-        header.style.background = 'rgba(10, 15, 30, 0.85)';
+        header.style.background = 'var(--header-bg-scroll)';
     } else {
         header.style.padding = '0.5rem 1.5rem';
-        header.style.background = 'rgba(10, 15, 30, 0.7)';
+        header.style.background = 'var(--header-bg)';
     }
 });
 
@@ -88,5 +88,65 @@ glassCards.forEach(card => {
         card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
+
+// --- Theme Toggle Logic ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const rootElement = document.documentElement;
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+        if (savedTheme === 'light') {
+            rootElement.classList.add('light-mode');
+        }
+    } else {
+        // Fallback to system setting
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (prefersLight) {
+            rootElement.classList.add('light-mode');
+        }
+    }
+    updateThemeIcon();
+}
+
+function updateThemeIcon() {
+    if (!themeToggleBtn) return;
+    const isLight = rootElement.classList.contains('light-mode');
+    const icon = themeToggleBtn.querySelector('i');
+    if (icon) {
+        if (isLight) {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        } else {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        rootElement.classList.toggle('light-mode');
+        const isLight = rootElement.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcon();
+    });
+}
+
+// Listen for system theme changes if no local storage preference is set
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+            rootElement.classList.add('light-mode');
+        } else {
+            rootElement.classList.remove('light-mode');
+        }
+        updateThemeIcon();
+    }
+});
+
+// Run theme init
+initTheme();
 
 console.log('Advanced Interactive Portfolio Loaded!');
