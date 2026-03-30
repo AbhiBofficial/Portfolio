@@ -94,18 +94,21 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
 
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme) {
-        if (savedTheme === 'light') {
-            rootElement.classList.add('light-mode');
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            if (savedTheme === 'light') {
+                rootElement.classList.add('light-mode');
+            }
+        } else {
+            // Fallback to system setting
+            const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (prefersLight) {
+                rootElement.classList.add('light-mode');
+            }
         }
-    } else {
-        // Fallback to system setting
-        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        if (prefersLight) {
-            rootElement.classList.add('light-mode');
-        }
+    } catch (e) {
+        console.warn('Theme init blocked:', e);
     }
     updateThemeIcon();
 }
@@ -116,35 +119,50 @@ function updateThemeIcon() {
     const icon = themeToggleBtn.querySelector('i');
     if (icon) {
         if (isLight) {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+            icon.className = 'fa-solid fa-moon';
         } else {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+            icon.className = 'fa-solid fa-sun';
         }
     }
 }
 
 if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+    themeToggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         rootElement.classList.toggle('light-mode');
         const isLight = rootElement.classList.contains('light-mode');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        try {
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        } catch (err) {}
         updateThemeIcon();
     });
 }
 
-// Listen for system theme changes if no local storage preference is set
-window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) {
-        if (e.matches) {
-            rootElement.classList.add('light-mode');
-        } else {
-            rootElement.classList.remove('light-mode');
-        }
-        updateThemeIcon();
+// Listen for system theme changes safely
+try {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+    const handleThemeChange = (e) => {
+        try {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    rootElement.classList.add('light-mode');
+                } else {
+                    rootElement.classList.remove('light-mode');
+                }
+                updateThemeIcon();
+            }
+        } catch (err) {}
+    };
+    
+    if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleThemeChange);
+    } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleThemeChange);
     }
-});
+} catch (e) {
+    console.warn('Media query listener error:', e);
+}
 
 // Run theme init
 initTheme();

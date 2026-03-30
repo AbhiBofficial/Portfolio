@@ -232,6 +232,13 @@ body {
     height: 40px;
     border-radius: 50%;
     transition: var(--transition);
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.theme-btn i {
+    pointer-events: none;
 }
 
 .theme-btn:hover {
